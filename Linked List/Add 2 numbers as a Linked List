@@ -1,0 +1,45 @@
+class Node:
+    def __init__(self,x):
+        self.val=x
+        self.next=None
+
+def addLL(head1,head2):
+    t1=head1
+    i=0
+    v1,v2=0,0
+    while(t1 != None):
+        v1=v1 + (t1.val)*(10**i)
+        i+=1
+        t1=t1.next
+    t2=head2
+    j=0
+    while(t2 != None):
+        v2=v2 + (t2.val)*(10**j)
+        j+=1
+        t2=t2.next
+    ans=v1+v2
+    r=ans%10
+    ansHead=Node(r)
+    temp=ansHead
+    ans=ans//10
+    while(ans!=0):
+        r=ans%10
+        temp.next=Node(r)
+        temp=temp.next
+        ans=ans//10
+    return ansHead
+    
+
+    
+head1=Node(2)
+head1.next=Node(4)
+head1.next.next=Node(3)
+
+head2=Node(5)
+head2.next=Node(6)
+head2.next.next=Node(4)
+
+result = addLL(head1,head2)
+while result != None:
+    print(result.val)
+    result=result.next
